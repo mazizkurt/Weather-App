@@ -10,11 +10,11 @@ const Stack = createNativeStackNavigator();
 export default function Navigation() {
   const scheme = useColorScheme();
   const {intro} = useSelector((state: any) => state.intro);
-  console.log(intro);
+
   return (
     <NavigationContainer theme={scheme == 'dark' ? DarkTheme : DefaultTheme}>
       <Stack.Navigator>
-        {intro ? (
+        {intro.intro ? (
           <Stack.Screen
             name="Home"
             component={Home}

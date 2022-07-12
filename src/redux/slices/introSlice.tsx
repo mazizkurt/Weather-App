@@ -6,7 +6,7 @@ const introSlice = createSlice({
     intro: false
   },
   reducers: {
-    setIntro(state:any, action: PayloadAction<string>) {
+    setIntro(state:any, action: PayloadAction<any>) {
       state.intro = action.payload
     }
   }

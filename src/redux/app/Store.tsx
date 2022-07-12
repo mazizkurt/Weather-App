@@ -2,6 +2,7 @@
 import {reduxBatch} from '@manaflair/redux-batch';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {configureStore, ThunkAction, Action} from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import {combineReducers} from 'redux';
 import {persistStore} from 'redux-persist';
 import {
@@ -53,7 +54,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
  * @see https://github.com/rt2zz/redux-persist#persistor-object
  */
 export const persistor = persistStore(store);
-
+export const useAppDispatch: () => AppDispatch = useDispatch
 // sagaMiddleware.run(rootSaga)
 
 export default store;
