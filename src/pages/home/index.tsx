@@ -1,16 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {useSelector} from 'react-redux';
+import NotCity from './components/not-city';
+import Citys from './components/citys';
 
 type Props = {};
 
 const Home = (props: Props) => {
-  return (
-    <View>
-      <Text>asdasd</Text>
-    </View>
-  );
+  const {citys} = useSelector((state: any) => state.city);
+  if (citys.length == 0) return <NotCity />;
+  else return <Citys />;
 };
 
 export default Home;
-
-const styles = StyleSheet.create({});

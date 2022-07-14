@@ -15,6 +15,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import introSlice from 'src/redux/slices/introSlice';
+import citySlice from '../slices/citySlice';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   intro: introSlice,
+  city: citySlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

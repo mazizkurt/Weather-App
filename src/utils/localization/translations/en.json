@@ -1,3 +1,5 @@
 {
-    "hello": "Hello"
+    "intro":{
+        "text":"The weather can be followed with the most up-to-date data."
+    }
 }
