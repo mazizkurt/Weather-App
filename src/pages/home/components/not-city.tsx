@@ -1,17 +1,27 @@
-import {Dimensions, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Dimensions,
+  Text,
+  TouchableOpacity,
+  View,
+  TextInput,
+} from 'react-native';
 import Lottie from 'lottie-react-native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {styles} from '../styles';
 import {Modalize} from 'react-native-modalize';
-
+import cities from 'src/services/cities.json'
 type Props = {};
-const {height} = Dimensions.get('window')
+const {height} = Dimensions.get('window');
 const NotCity = (props: Props) => {
   const modalizeRef = useRef<Modalize>(null);
-
+  console.log(process.env.REACT_APP_BASE_URL)
   const onOpen = () => {
     modalizeRef.current?.open();
   };
+
+  const changeCities = (e: any) => {
+  };
+
   return (
     <>
       <View style={styles.notCityContainer}>
@@ -29,15 +39,17 @@ const NotCity = (props: Props) => {
       <Modalize
         ref={modalizeRef}
         scrollViewProps={{showsVerticalScrollIndicator: false}}
-        snapPoint={height/2}
+        snapPoint={height / 2}
         HeaderComponent={
-          <View>
-            <Text>Header</Text>
+          <View style={styles.search}>
+            <View style={styles.searchView}>
+              <TextInput
+                placeholder="İl veya ilçe seçiniz"
+                onChangeText={changeCities}
+              />
+            </View>
           </View>
-        }
-        >
-        <Text>Debeneeeeeee</Text>
-      </Modalize>
+        }></Modalize>
     </>
   );
 };

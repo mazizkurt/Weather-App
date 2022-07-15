@@ -27,5 +27,21 @@ export const styles = StyleSheet.create({
         fontFamily:'Nunito',
         fontSize:16,
         marginBottom:30
+    },
+    search:{
+      width:'100%',
+      justifyContent:'center',
+      alignItems:'center',
+      marginTop:30
+    },
+    searchView:{
+      width:'90%',
+      border:1,
+      borderWidth:1,
+      paddingTop:15,
+      paddingLeft:10,
+      paddingBottom:15,
+      borderRadius:6,
+      borderColor:'#E8E8E8'
     }
 });
