@@ -9,18 +9,17 @@ import Lottie from 'lottie-react-native';
 import React, {useRef, useState} from 'react';
 import {styles} from '../styles';
 import {Modalize} from 'react-native-modalize';
-import cities from 'src/services/cities.json'
+import {API_URL, API_TOKEN} from '@env';
 type Props = {};
 const {height} = Dimensions.get('window');
 const NotCity = (props: Props) => {
   const modalizeRef = useRef<Modalize>(null);
-  console.log(process.env.REACT_APP_BASE_URL)
+  console.log(API_URL);
   const onOpen = () => {
     modalizeRef.current?.open();
   };
 
-  const changeCities = (e: any) => {
-  };
+  const changeCities = (e: any) => {};
 
   return (
     <>
