@@ -4,23 +4,43 @@ import {
   TouchableOpacity,
   View,
   TextInput,
+  ScrollView,
 } from 'react-native';
 import Lottie from 'lottie-react-native';
 import React, {useRef, useState} from 'react';
 import {styles} from '../styles';
 import {Modalize} from 'react-native-modalize';
-import {API_URL, API_TOKEN} from '@env';
+import {getGeocoding} from 'src/services';
+import search from 'src/assets/icons/search';
+import {SvgXml} from 'react-native-svg';
+import plusCircle from 'src/assets/icons/plus-circle';
+import {useDispatch} from 'react-redux';
+import {addCity} from 'src/redux/slices/citySlice';
 type Props = {};
 const {height} = Dimensions.get('window');
 const NotCity = (props: Props) => {
+  const [searchCities, setSearchCities] = useState([]);
+  const dispatch = useDispatch();
   const modalizeRef = useRef<Modalize>(null);
-  console.log(API_URL);
+
   const onOpen = () => {
     modalizeRef.current?.open();
   };
 
-  const changeCities = (e: any) => {};
+  const changeCities = (e: any) => {
+    if (e.length > 1)
+      getGeocoding(e)
+        .then(res => {
+          setSearchCities(res.data);
+        })
+        .catch(err => console.log(err));
+    else setSearchCities([]);
+  };
 
+  const addNewCity = (e: any) => {
+    dispatch(addCity(e))
+    modalizeRef.current?.close();
+  };
   return (
     <>
       <View style={styles.notCityContainer}>
@@ -39,16 +59,35 @@ const NotCity = (props: Props) => {
         ref={modalizeRef}
         scrollViewProps={{showsVerticalScrollIndicator: false}}
         snapPoint={height / 2}
+        FooterComponent={<Text>Footer</Text>}
         HeaderComponent={
           <View style={styles.search}>
             <View style={styles.searchView}>
               <TextInput
                 placeholder="İl veya ilçe seçiniz"
                 onChangeText={changeCities}
+                style={styles.searchInput}
               />
+              <SvgXml xml={search('#CFCFCF')} />
             </View>
           </View>
-        }></Modalize>
+        }>
+        <ScrollView>
+          <View style={styles.result}>
+            {searchCities.map((data: any, index) => (
+              <TouchableOpacity
+                style={styles.resultView}
+                activeOpacity={0.7}
+                onPress={(e: any) => addNewCity(data)}>
+                <Text style={styles.resultText}>
+                  {data.name}, {data.country}
+                </Text>
+                <SvgXml xml={plusCircle('#A0A0A0')} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        </ScrollView>
+      </Modalize>
     </>
   );
 };

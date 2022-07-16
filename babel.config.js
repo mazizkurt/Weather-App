@@ -1,4 +1,12 @@
-module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
-  plugins: ['react-native-reanimated/plugin','react-native-dotenv'],
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['module:metro-react-native-babel-preset'],
+    plugins: [
+      ["module:react-native-dotenv", {
+        "moduleName": "@env"
+      }],
+      'react-native-reanimated/plugin'
+    ]
+  };
 };

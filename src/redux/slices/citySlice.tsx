@@ -10,10 +10,9 @@ const citySlice = createSlice({
       state.citys = action.payload;
     },
     addCity(state:any, action: PayloadAction<any>) {
-        var data = [...state];
-        console.log(data);
-        console.log(state);
-        state.citys = action.payload
+        const data = [...state.citys]
+        data.push(action.payload)
+        state.citys = data
     }
   }
 })

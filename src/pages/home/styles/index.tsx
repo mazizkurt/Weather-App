@@ -1,47 +1,121 @@
-import {StyleSheet} from 'react-native';
-
+import {Dimensions, StyleSheet} from 'react-native';
+const {width} = Dimensions.get('window');
 export const styles = StyleSheet.create({
   notCityContainer: {
     flex: 1,
-    justifyContent:'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notCityLottie: {
+    width: 200,
+    marginBottom: 20,
+  },
+  addCity: {
+    width: '60%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(142,85,164)',
+    padding: 12,
+    borderRadius: 100,
+  },
+  addCityText: {
+    fontFamily: 'Nunito-Bold',
+    color: 'white',
+    fontSize: 18,
+  },
+  notAddCityText: {
+    fontFamily: 'Nunito',
+    fontSize: 16,
+    marginBottom: 30,
+  },
+  search: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
+    marginBottom: 10,
+  },
+  searchView: {
+    width: '90%',
+    border: 1,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 45,
+    borderColor: '#E8E8E8',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  searchInput: {
+    width: '90%',
+    fontFamily: 'Nunito-Regular',
+  },
+  result: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  resultView: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E8E8E8',
+    width: '90%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  resultText: {
+    fontFamily: 'Nunito-SemiBold',
+  },
+  citysView: {
+    flex: 1,
+  },
+  headerCitysView: {
+    flex: 0.1,
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    
+  },
+  headerCitysRight:{
+    flexDirection:'row',
+  },
+  headerCitysContent:{
+    flexDirection:'row',
+    justifyContent:'space-between',
     alignItems:'center'
   },
-  notCityLottie:{
-    width:200,
-    marginBottom:20
+  headerCitysTitle: {
+    fontFamily: 'Nunito-ExtraBold',
+    fontSize: 25,
   },
-  addCity:{
-    width:'60%',
-    justifyContent:'center',
+  contentCitysView: {
+    flex: 0.9,
+   
+  },
+  contentScrollCitysView:{
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  citysCard: {
+    backgroundColor: '#FCFCFC',
+    borderRadius: 5,
+    padding: 10,
+    width: width / 2 - 30,
+    height:100,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 1.22,
+    elevation: 3,
+    marginBottom:20
+
+  },
+  citysContentCard:{
+    flexDirection:'row',
     alignItems:'center',
-    backgroundColor:'rgb(142,85,164)',
-    padding:12,
-    borderRadius:100
-    },
-    addCityText:{
-        fontFamily:'Nunito-Bold',
-        color:'white',
-        fontSize:18
-    },
-    notAddCityText:{
-        fontFamily:'Nunito',
-        fontSize:16,
-        marginBottom:30
-    },
-    search:{
-      width:'100%',
-      justifyContent:'center',
-      alignItems:'center',
-      marginTop:30
-    },
-    searchView:{
-      width:'90%',
-      border:1,
-      borderWidth:1,
-      paddingTop:15,
-      paddingLeft:10,
-      paddingBottom:15,
-      borderRadius:6,
-      borderColor:'#E8E8E8'
-    }
+    justifyContent:'space-between',
+    flexWrap:'wrap',
+  }
 });
