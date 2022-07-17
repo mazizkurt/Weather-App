@@ -10,7 +10,7 @@ import Lottie from 'lottie-react-native';
 import React, {useRef, useState} from 'react';
 import {styles} from '../styles';
 import {Modalize} from 'react-native-modalize';
-import {getGeocoding} from 'src/services';
+import {getCurrentWeather, getGeocoding} from 'src/services';
 import search from 'src/assets/icons/search';
 import {SvgXml} from 'react-native-svg';
 import plusCircle from 'src/assets/icons/plus-circle';
@@ -19,10 +19,10 @@ import {addCity} from 'src/redux/slices/citySlice';
 type Props = {};
 const {height} = Dimensions.get('window');
 const NotCity = (props: Props) => {
-  const [searchCities, setSearchCities] = useState([]);
   const dispatch = useDispatch();
   const modalizeRef = useRef<Modalize>(null);
-
+  
+  const [searchCities, setSearchCities] = useState([]);
   const onOpen = () => {
     modalizeRef.current?.open();
   };
@@ -38,7 +38,12 @@ const NotCity = (props: Props) => {
   };
 
   const addNewCity = (e: any) => {
-    dispatch(addCity(e))
+    getCurrentWeather(e.lat, e.lon).then((res)=>{
+      e.currentWeather = res.data
+       dispatch(addCity(e))
+    }).catch((err)=>{
+      console.log(err)
+    })
     modalizeRef.current?.close();
   };
   return (

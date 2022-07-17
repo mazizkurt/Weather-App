@@ -100,14 +100,13 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     width: width / 2 - 30,
-    height:100,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 1.22,
+    shadowOpacity: 0.122,
+    shadowRadius: 2.22,
     elevation: 3,
     marginBottom:20
 
@@ -117,5 +116,27 @@ export const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'space-between',
     flexWrap:'wrap',
+  },
+  widgetHeader:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between'
+  },
+  weatherText:{
+    fontSize:20,
+    fontFamily:'Nunito-ExtraBold'
+  },
+  humidityText:{
+    fontSize:13,
+    fontFamily:'Nunito'
+
+  },
+  weatherDescText:{
+    fontFamily:'Nunito'
+  },
+  weatherNameText:{
+    fontFamily:'Nunito-Bold',
+    fontSize:16
+
   }
 });
