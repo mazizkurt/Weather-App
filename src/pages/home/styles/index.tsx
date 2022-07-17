@@ -99,7 +99,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FCFCFC',
     borderRadius: 5,
     padding: 10,
-    width: width / 2 - 30,
+    width: width - 40,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
